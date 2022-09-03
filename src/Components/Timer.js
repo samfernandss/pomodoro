@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-const Timer = (props) => {
-  const [timer, setTimer] = useState(null);
+const Timer = ({ timer, setTimer }) => {
 
   useEffect(() => {
-    setTimer(props.timer);
+    if (timer < 0) return;
 
-    if (timer !== 0) {
-      const pomodoroTimer = setTimeout(() => {
-        console.log(timer)
-        setTimer(timer - 1);
-      }, 1000);
-      if (timer < 0) {
+    setTimer(timer);
+
+    const pomodoroTimer = setTimeout(() => {
+      console.log(timer)
+      setTimer(timer - 1);
+      if (timer = 0) {
         clearInterval(pomodoroTimer);
       }
-    }
+    }, 1000);
   }, [timer]);
 
   return (
-    <div>Timer</div>
+    <>
+      {timer >= 0 && <div>Timer: {timer}</div>}
+      {timer < 0 && <p>intervalo</p>}
+    </>
   )
 };
 

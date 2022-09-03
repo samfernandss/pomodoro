@@ -12,9 +12,8 @@ function App() {
         type='number'
         label='How many minutes do you wanna focus?'
         id='timer'
-        value={timer}
         onChange={setTimer} />
-      <Timer timer={timer}/>
+      <Timer timer={timer} setTimer={setTimer}/>
     </div>
   );
 }

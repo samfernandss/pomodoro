@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Input = (props) => {
+const Input = ({id, label, type, value, onChange}) => {
 
-  function onChange( {target}) {
-    props.onChange(target.value);
+  function handleChange({target: {value}}) {
+    onChange(value*60);
   }
 
   return (
     <>
-      <label htmlFor={props.id}>{props.label}</label>
-      <input id={props.id} type ={props.type} value={props.value} onChange={onChange}/>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type ={type} value={value} onChange={handleChange}/>
     </>
   )
 };
